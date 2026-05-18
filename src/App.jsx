@@ -638,9 +638,9 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"int x=5, y=3;\nprintf(\"%d\", x++ + y);",options:["8","9","Error","Undefined"],correct:0,exp:"x++ returns 5 (then x=6), +y=3. Total=5+3=8. Then x becomes 6."},
-        {q:"What is -3 % 2?",options:["1","-1","0","Error"],correct:1,exp:"In C, sign of % result follows the DIVIDEND. -3 % 2 = -1."},
-        {q:"int a=10,b=0;\nprintf(\"%d\",a&&b||5);",options:["0","1","5","10"],correct:1,exp:"a&&b = 10&&0 = 0. 0||5 = 1 (non-zero is true). Output: 1."},
+        {q:"int x=5,y=3;\nprintf(\"%d\",x+++y);",options:["8","9","Error","Undefined"],correct:0,exp:"x++ returns 5 (then x=6), +y=3. Total=5+3=8. Then x becomes 6."},
+        {q:"What is -3 % 2?",options:["1","-1","0","Error"],correct:1,exp:"In C, sign of % result follows the DIVIDEND. -3 % 2 = -1."],
+        {q:"int a=10,b=0;\nprintf(\"%d\",a&&b||5);",options:["0","1","5","10"],correct:1,exp:"a&&b = 10&&0 = 0. 0||5 = 1 (non-zero is true). Output: 1."],
         {q:"What is sizeof(int) + sizeof(char)?",options:["2","3","5","Compiler-dependent"],correct:2,exp:"sizeof(int)=4, sizeof(char)=1. 4+1=5."},
         {q:"Which is NOT an assignment operator?\nA. +=  B. ==  C. *=  D. %=",options:["+=","==","*=","%="],correct:1,exp:"== is comparison (equality test). +=, *=, %= are compound assignment operators."},
       ]
@@ -702,7 +702,7 @@ int main() {
       mcqs:[
         {q:"What happens when break is missing in switch?",options:["Compile error","Runtime error","Fall-through to next case","switch exits"],correct:2,exp:"Without break, execution falls through to the next case automatically."},
         {q:"switch(x) works when x is?",options:["float","double","int","All types"],correct:2,exp:"switch only accepts integer types (int, char, short, long, enum). float/double cause compile error."},
-        {q:"int x=5;\nif(x=0) printf(\"A\"); else printf(\"B\");",options:["A","B","Compile error","Runtime error"],correct:1,exp:"if(x=0) assigns 0 to x. 0 is false, so else executes. Output: B."},
+        {q:"int x=5;\nif(x=0) printf(\"A\"); else printf(\"B\");",options:["A","B","Compile error","Runtime error"],correct:1,exp:"if(x=0) assigns 0 to x. 0 is false, so else executes. Output: B."],
       ]
     },
     {
@@ -760,9 +760,9 @@ int main() {
 }`,
       mcqs:[
         {q:"int i=0;\nwhile(++i<=5);\nprintf(\"%d\",i);",options:["5","6","4","Infinite"],correct:1,exp:"Empty body (;). ++i increments to 1,2,3,4,5,6. At i=6, 6<=5 is false. Prints 6."},
-        {q:"for(i=1;i!=10;i+=2) — how many times?",options:["5","4","Infinite","0"],correct:2,exp:"i goes 1,3,5,7,9,11... never equals 10. Infinite loop!"},
+        {q:"for(i=1;i!=10;i+=2) — how many times?",options:["5","4","Infinite","0"],correct:2,exp:"i goes 1,3,5,7,9,11... never equals 10. Infinite loop!"],
         {q:"do{printf(\"Hi\");}while(0); — output?",options:["Nothing","Hi (infinite)","Hi (once)","Compile error"],correct:2,exp:"do-while always executes body once before checking condition. Prints Hi once, then 0 is false."},
-        {q:"for(i=1;i<10;i++); printf(\"%d\",i);",options:["1-9","10","9","Compile error"],correct:1,exp:"Semicolon = empty body. Loop runs until i=10. printf prints 10."},
+        {q:"for(i=1;i<10;i++); printf(\"%d\",i);",options:["1-9","10","9","Compile error"],correct:1,exp:"Semicolon = empty body. Loop runs until i=10. printf prints 10."],
       ]
     },
     {
@@ -821,7 +821,7 @@ int main() {
       mcqs:[
         {q:"for(i=1;i<=5;i++){\n  if(i==3) continue;\n  printf(\"%d \",i);\n}",options:["1 2 3 4 5","1 2 4 5","1 2","4 5"],correct:1,exp:"continue skips i=3. Prints 1 2 4 5."},
         {q:"for(i=1;i<=5;i++){\n  if(i==3) break;\n  printf(\"%d \",i);\n}",options:["1 2","1 2 3 4 5","3 4 5","1 2 3"],correct:0,exp:"break exits when i=3. Only 1 and 2 are printed."},
-        {q:"(int)3.9 = ?",options:["4","3","3.9","Error"],correct:1,exp:"Explicit cast to int truncates (does NOT round). (int)3.9 = 3."},
+        {q:"(int)3.9 = ?",options:["4","3","3.9","Error"],correct:1,exp:"Explicit cast to int truncates (does NOT round). (int)3.9 = 3."],
       ]
     },
     {
@@ -891,9 +891,9 @@ int main() {
 }`,
       mcqs:[
         {q:"printf(\"%.3f\", 12.6789); output?",options:["12.678","12.679","12.7","12.6789"],correct:0,exp:"%.3f rounds to 3 decimal places: 12.6789 → 12.679... wait — 12.678 rounds to 12.679. Actually the 9 rounds up the 8→9. Correct: 12.679."},
-        {q:"int x=printf(\"ABCDE\");\nprintf(\"%d\",x);",options:["ABCDE","5","ABCDE5","Error"],correct:2,exp:"printf returns chars printed. \"ABCDE\"=5 chars. First prints ABCDE, then 5. Output: ABCDE5."},
-        {q:"gets() vs scanf(\"%s\") difference?",options:["No difference","gets reads spaces; scanf stops at space","scanf is faster","gets is safer"],correct:1,exp:"gets() reads entire line including spaces until newline. scanf(\"%s\") stops at any whitespace."},
-        {q:"What does puts(\"Hello\") print?",options:["Hello","Hello\\n","\"Hello\"","Hello with no newline"],correct:1,exp:"puts() always appends a newline after the string. Equivalent to printf(\"Hello\\n\")."},
+        {q:"int x=printf(\"ABCDE\");\nprintf(\"%d\",x);",options:["ABCDE","5","ABCDE5","Error"],correct:2,exp:"printf returns chars printed. \"ABCDE\"=5 chars. First prints ABCDE, then 5. Output: ABCDE5."],
+        {q:"gets() vs scanf(\"%s\") difference?",options:["No difference","gets reads spaces; scanf stops at space","scanf is faster","gets is safer"],correct:1,exp:"gets() reads entire line including spaces until newline. scanf(\"%s\") stops at any whitespace."],
+        {q:"What does puts(\"Hello\") print?",options:["Hello","Hello\\n","\"Hello\"","Hello with no newline"],correct:1,exp:"puts() always appends a newline after the string. Equivalent to printf(\"Hello\\n\")."],
       ]
     },
   ]
@@ -954,8 +954,8 @@ void swap(int *a, int *b) {  /* call by reference */
       mcqs:[
         {q:"Which is a valid function prototype?\nA. function1(int,int);\nB. void function1(a,b);\nC. void function1(int,int);\nD. int (int,int);",options:["A","B","C","D"],correct:2,exp:"C is correct: must have return type, valid name, and param types. Ends with semicolon."},
         {q:"Call by value vs call by reference:\nIn call by value, the original variable is?",options:["Modified","Not modified","Deleted","Undefined"],correct:1,exp:"Call by value passes a COPY. The original variable is NOT modified by the function."},
-        {q:"void func(int *p){*p=100;}\nmain: int x=5; func(&x); printf(\"%d\",x);",options:["5","100","Error","Undefined"],correct:1,exp:"func receives address of x, *p=100 changes x through pointer. Output: 100."},
-        {q:"sqrt() function needs which header?",options:["stdlib.h","string.h","math.h","stdio.h"],correct:2,exp:"All math functions (sqrt, pow, fabs, ceil, floor, sin, cos, log) need #include <math.h>."},
+        {q:"void func(int *p){*p=100;}\nmain: int x=5; func(&x); printf(\"%d\",x);",options:["5","100","Error","Undefined"],correct:1,exp:"func receives address of x, *p=100 changes x through pointer. Output: 100."],
+        {q:"sqrt() function needs which header?",options:["stdlib.h","string.h","math.h","stdio.h"],correct:2,exp:"All math functions (sqrt, pow, fabs, ceil, floor, sin, cos, log) need #include <math.h>."],
       ]
     },
     {
@@ -1013,9 +1013,9 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"void rec(int n){if(n==0)return; printf(\"%d \",n); rec(n-1);}\nrec(5) output?",options:["5","5 4 3 2 1","1 2 3 4 5","0 1 2 3 4"],correct:1,exp:"Prints n before recursing. Stops at 0. Output: 5 4 3 2 1."},
-        {q:"int f(int n){if(n==1)return 1; return n*f(n-1);}\nf(5)=?",options:["5","24","120","25"],correct:2,exp:"f(5)=5×f(4)=5×4×f(3)=5×4×3×f(2)=5×4×3×2×f(1)=5×4×3×2×1=120."},
-        {q:"What is the base case essential for?",options:["Speed","Stopping infinite recursion","Memory saving","Faster output"],correct:1,exp:"Base case terminates recursion. Without it, function calls itself infinitely → stack overflow."},
+        {q:"void rec(int n){if(n==0)return; printf(\"%d \",n); rec(n-1);}\nrec(5) output?",options:["5","5 4 3 2 1","1 2 3 4 5","0 1 2 3 4"],correct:1,exp:"Prints n before recursing. Stops at 0. Output: 5 4 3 2 1."],
+        {q:"int f(int n){if(n==1)return 1; return n*f(n-1);}\nf(5)=?",options:["5","24","120","25"],correct:2,exp:"f(5)=5×f(4)=5×4×f(3)=5×4×3×f(2)=5×4×3×2×f(1)=5×4×3×2×1=120."],
+        {q:"What is the base case essential for?",options:["Speed","Stopping infinite recursion","Memory saving","Faster output"],correct:1,exp:"Base case terminates recursion. Without it, function calls itself infinitely → stack overflow."],
       ]
     },
     {
@@ -1071,11 +1071,11 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"static int x=0 in function called 3 times, each does x++.\nValue after 3rd call?",options:["0","1","2","3"],correct:3,exp:"static preserves value. 0→1→2→3 across 3 calls. Final value: 3."},
-        {q:"auto int x=5 called 3 times. Value on 3rd call?",options:["5","15","7","Garbage"],correct:0,exp:"auto resets every call. Re-initialized to 5 each time. Always 5."},
-        {q:"register int a; scanf(\"%d\",&a); — result?",options:["Works fine","Compile error","Runtime error","Undefined"],correct:1,exp:"register variables may be in CPU registers, so taking address (&) is not allowed — compile error."},
-        {q:"Default initial value of a static variable?",options:["Garbage","0","1","-1"],correct:1,exp:"static (and global) variables are zero-initialized by default."},
-        {q:"Which storage class is default for local variables?",options:["static","register","auto","extern"],correct:2,exp:"All local variables are auto by default (stored on stack, garbage initial value)."},
+        {q:"static int x=0 in function called 3 times, each does x++.\nValue after 3rd call?",options:["0","1","2","3"],correct:3,exp:"static preserves value. 0→1→2→3 across 3 calls. Final value: 3."],
+        {q:"auto int x=5 called 3 times. Value on 3rd call?",options:["5","15","7","Garbage"],correct:0,exp:"auto resets every call. Re-initialized to 5 each time. Always 5."],
+        {q:"register int a; scanf(\"%d\",&a); — result?",options:["Works fine","Compile error","Runtime error","Undefined"],correct:1,exp:"register variables may be in CPU registers, so taking address (&) is not allowed — compile error."],
+        {q:"Default initial value of a static variable?",options:["Garbage","0","1","-1"],correct:1,exp:"static (and global) variables are zero-initialized by default."],
+        {q:"Which storage class is default for local variables?",options:["static","register","auto","extern"],correct:2,exp:"All local variables are auto by default (stored on stack, garbage initial value)."],
       ]
     },
   ]
@@ -1136,10 +1136,10 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"int arr[5]={1,2}; What is arr[3]?",options:["Garbage","0","2","Undefined"],correct:1,exp:"Partial initialization: remaining elements are set to 0. arr = {1,2,0,0,0}. arr[3]=0."},
-        {q:"The base address of int arr[5] is?",options:["arr[0]","&arr","arr","*arr"],correct:2,exp:"arr (the array name) IS the address of the first element. arr == &arr[0]."},
-        {q:"arr[i] is equivalent to?",options:["arr+i","*(arr+i)","&arr[i]","arr*i"],correct:1,exp:"Array indexing arr[i] is exactly equivalent to *(arr+i) in pointer notation."},
-        {q:"What is the time complexity of inserting at position 0 in array of n elements?",options:["O(1)","O(log n)","O(n)","O(n²)"],correct:2,exp:"Inserting at beginning requires shifting all n elements right. O(n)."},
+        {q:"int arr[5]={1,2}; What is arr[3]?",options:["Garbage","0","2","Undefined"],correct:1,exp:"Partial initialization: remaining elements are set to 0. arr = {1,2,0,0,0}. arr[3]=0."],
+        {q:"The base address of int arr[5] is?",options:["arr[0]","&arr","arr","*arr"],correct:2,exp:"arr (the array name) IS the address of the first element. arr == &arr[0]."],
+        {q:"arr[i] is equivalent to?",options:["arr+i","*(arr+i)","&arr[i]","arr*i"],correct:1,exp:"Array indexing arr[i] is exactly equivalent to *(arr+i) in pointer notation."],
+        {q:"What is the time complexity of inserting at position 0 in array of n elements?",options:["O(1)","O(log n)","O(n)","O(n²)"],correct:2,exp:"Inserting at beginning requires shifting all n elements right. O(n)."],
       ]
     },
     {
@@ -1201,9 +1201,9 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"int mat[3][4] — total elements?",options:["7","12","9","3"],correct:1,exp:"3 rows × 4 columns = 12 total elements."},
-        {q:"How is a 2D array stored in memory?",options:["Column-major","Row-major","Random","Both"],correct:1,exp:"C stores 2D arrays in ROW-MAJOR order: row 0 elements first, then row 1, etc."},
-        {q:"How to pass 2D array to function?",options:["func(int mat[][]","func(int *mat","func(int mat[][4]","func(int **mat"],correct:2,exp:"Must specify number of columns: func(int mat[][COLS], int rows). Column count is mandatory."},
+        {q:"int mat[3][4] — total elements?",options:["7","12","9","3"],correct:1,exp:"3 rows × 4 columns = 12 total elements."],
+        {q:"How is a 2D array stored in memory?",options:["Column-major","Row-major","Random","Both"],correct:1,exp:"C stores 2D arrays in ROW-MAJOR order: row 0 elements first, then row 1, etc."],
+        {q:"How to pass 2D array to function?",options:["func(int mat[][]","func(int *mat","func(int mat[][4]","func(int **mat"],correct:2,exp:"Must specify number of columns: func(int mat[][COLS], int rows). Column count is mandatory."],
       ]
     },
     {
@@ -1261,10 +1261,10 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"Binary search requires array to be?",options:["Random","Sorted","Partially sorted","Reversed"],correct:1,exp:"Binary search REQUIRES the array to be sorted (ascending or descending). Otherwise results are incorrect."},
-        {q:"Linear search time complexity?",options:["O(1)","O(log n)","O(n)","O(n²)"],correct:2,exp:"Linear search checks each element one by one. In worst case (not found), checks all n elements: O(n)."},
-        {q:"Binary search on 1000 elements: max comparisons?",options:["1000","500","10","100"],correct:2,exp:"log₂(1000) ≈ 10. Binary search needs at most 10 comparisons for 1000 elements."},
-        {q:"What is mid in binary search if low=0, high=8?",options:["4","3","5","8"],correct:0,exp:"mid = (low+high)/2 = (0+8)/2 = 4."},
+        {q:"Binary search requires array to be?",options:["Random","Sorted","Partially sorted","Reversed"],correct:1,exp:"Binary search REQUIRES the array to be sorted (ascending or descending). Otherwise results are incorrect."],
+        {q:"Linear search time complexity?",options:["O(1)","O(log n)","O(n)","O(n²)"],correct:2,exp:"Linear search checks each element one by one. In worst case (not found), checks all n elements: O(n)."],
+        {q:"Binary search on 1000 elements: max comparisons?",options:["1000","500","10","100"],correct:2,exp:"log₂(1000) ≈ 10. Binary search needs at most 10 comparisons for 1000 elements."],
+        {q:"What is mid in binary search if low=0, high=8?",options:["4","3","5","8"],correct:0,exp:"mid = (low+high)/2 = (0+8)/2 = 4."],
       ]
     },
     {
@@ -1332,9 +1332,9 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"Bubble sort time complexity (worst case)?",options:["O(n)","O(n log n)","O(n²)","O(log n)"],correct:2,exp:"Bubble sort uses two nested loops: O(n²) comparisons in worst case (reverse sorted)."},
-        {q:"How many passes (maximum) for bubble sort on n elements?",options:["n","n+1","n-1","n/2"],correct:2,exp:"Maximum n-1 passes are needed for n elements (each pass guarantees one more element in place)."},
-        {q:"Bubble sort is classified as?",options:["Divide and conquer","In-place comparison sort","Out-of-place sort","Non-comparison sort"],correct:1,exp:"Bubble sort is an in-place (no extra space) comparison-based sorting algorithm."},
+        {q:"Bubble sort time complexity (worst case)?",options:["O(n)","O(n log n)","O(n²)","O(log n)"],correct:2,exp:"Bubble sort uses two nested loops: O(n²) comparisons in worst case (reverse sorted)."],
+        {q:"How many passes (maximum) for bubble sort on n elements?",options:["n","n+1","n-1","n/2"],correct:2,exp:"Maximum n-1 passes are needed for n elements (each pass guarantees one more element in place)."],
+        {q:"Bubble sort is classified as?",options:["Divide and conquer","In-place comparison sort","Out-of-place sort","Non-comparison sort"],correct:1,exp:"Bubble sort is an in-place (no extra space) comparison-based sorting algorithm."],
         {q:"After 1st pass of bubble sort on {5,3,1,4,2}?",options:["{1,2,3,4,5}","{3,1,4,2,5}","{1,3,5,4,2}","{5,4,3,2,1}"],correct:1,exp:"First pass moves largest (5) to end: 5,3→3,5. 3,1→1,3. 3,4→stays. 4,2→2,4. Result:{3,1,4,2,5}."},
       ]
     },
@@ -1399,10 +1399,10 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"int x=10; int *p=&x; *p=20; printf(\"%d\",x);",options:["10","20","0","Error"],correct:1,exp:"*p=20 dereferences p and writes 20 to x's location. x becomes 20."},
-        {q:"If int *p=1000, what is p+2 (int is 4 bytes)?",options:["1001","1002","1008","1004"],correct:2,exp:"p+2 moves 2×sizeof(int)=2×4=8 bytes. 1000+8=1008."},
+        {q:"int x=10; int *p=&x; *p=20; printf(\"%d\",x);",options:["10","20","0","Error"],correct:1,exp:"*p=20 dereferences p and writes 20 to x's location. x becomes 20."],
+        {q:"If int *p=1000, what is p+2 (int is 4 bytes)?",options:["1001","1002","1008","1004"],correct:2,exp:"p+2 moves 2×sizeof(int)=2×4=8 bytes. 1000+8=1008."],
         {q:"What is a dangling pointer?",options:["Uninitialized pointer","Points to freed memory","NULL pointer","Pointer to pointer"],correct:1,exp:"Dangling pointer points to memory that has been freed or a local variable that went out of scope."},
-        {q:"void *p can point to?",options:["int only","Any data type","char only","float only"],correct:1,exp:"void* is a generic pointer that can hold address of any data type. Must cast before dereferencing."},
+        {q:"void *p can point to?",options:["int only","Any data type","char only","float only"],correct:1,exp:"void* is a generic pointer that can hold address of any data type. Must cast before dereferencing."],
       ]
     },
     {
@@ -1462,10 +1462,10 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"malloc vs calloc: key difference?",options:["malloc is faster always","calloc initializes to zero","malloc takes 2 args","calloc returns int*"],correct:1,exp:"calloc initializes all bytes to ZERO. malloc leaves memory uninitialized (garbage values)."},
-        {q:"int *p=(int*)malloc(sizeof(int));\np=NULL; free(p); — problem?",options:["Compile error","Memory leak","Dangling pointer","No problem"],correct:1,exp:"p=NULL loses the reference to allocated memory WITHOUT freeing it → memory leak."},
-        {q:"Return type of malloc()?",options:["int*","void*","char*","depends on input"],correct:1,exp:"malloc (and calloc, realloc) always return void* which must be cast to the appropriate pointer type."},
-        {q:"realloc(ptr, 0) is equivalent to?",options:["malloc(0)","calloc(0,0)","free(ptr)","Error"],correct:2,exp:"realloc(ptr, 0) frees the memory pointed to by ptr, equivalent to free(ptr)."},
+        {q:"malloc vs calloc: key difference?",options:["malloc is faster always","calloc initializes to zero","malloc takes 2 args","calloc returns int*"],correct:1,exp:"calloc initializes all bytes to ZERO. malloc leaves memory uninitialized (garbage values)."],
+        {q:"int *p=(int*)malloc(sizeof(int));\np=NULL; free(p); — problem?",options:["Compile error","Memory leak","Dangling pointer","No problem"],correct:1,exp:"p=NULL loses the reference to allocated memory WITHOUT freeing it → memory leak."],
+        {q:"Return type of malloc()?",options:["int*","void*","char*","depends on input"],correct:1,exp:"malloc (and calloc, realloc) always return void* which must be cast to the appropriate pointer type."],
+        {q:"realloc(ptr, 0) is equivalent to?",options:["malloc(0)","calloc(0,0)","free(ptr)","Error"],correct:2,exp:"realloc(ptr, 0) frees the memory pointed to by ptr, equivalent to free(ptr)."],
       ]
     },
     {
@@ -1533,11 +1533,11 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"strlen(\"Hello\\0World\") = ?",options:["5","11","10","6"],correct:0,exp:"strlen stops at first \\0. 'Hello' has 5 chars before \\0. Returns 5."},
-        {q:"strcmp(\"apple\",\"apple\") = ?",options:["1","0","-1","Error"],correct:1,exp:"strcmp returns 0 when strings are EQUAL."},
-        {q:"char *p=\"Hello\"; p[0]='J'; — what happens?",options:["Works fine","Segmentation fault","J replaces H","Compile error"],correct:1,exp:"String literals are read-only. Modifying via pointer causes undefined behavior (usually segfault)."},
-        {q:"Which function reads string WITH spaces?",options:["scanf(\"%s\")","gets()","getchar()","putchar()"],correct:1,exp:"gets() reads entire line including spaces until newline. scanf(\"%s\") stops at whitespace."},
-        {q:"strcat(\"Hello\",\" World\") result?",options:["Hello","Hello World","World","Error"],correct:1,exp:"strcat appends second string to first. Result: \"Hello World\"."},
+        {q:"strlen(\"Hello\\0World\") = ?",options:["5","11","10","6"],correct:0,exp:"strlen stops at first \\0. 'Hello' has 5 chars before \\0. Returns 5."],
+        {q:"strcmp(\"apple\",\"apple\") = ?",options:["1","0","-1","Error"],correct:1,exp:"strcmp returns 0 when strings are EQUAL."],
+        {q:"char *p=\"Hello\"; p[0]='J'; — what happens?",options:["Works fine","Segmentation fault","J replaces H","Compile error"],correct:1,exp:"String literals are read-only. Modifying via pointer causes undefined behavior (usually segfault)."],
+        {q:"Which function reads string WITH spaces?",options:["scanf(\"%s\")","gets()","getchar()","putchar()"],correct:1,exp:"gets() reads entire line including spaces until newline. scanf(\"%s\") stops at whitespace."],
+        {q:"strcat(\"Hello\",\" World\") result?",options:["Hello","Hello World","World","Error"],correct:1,exp:"strcat appends second string to first. Result: \"Hello World\"."],
       ]
     },
   ]
@@ -1616,10 +1616,10 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"Which operator accesses structure member via pointer?",options:[".","->"," *","::"],correct:1,exp:"Arrow operator (->) is used to access members via pointer. Equivalent to (*ptr).member."},
-        {q:"sizeof(struct) is?",options:["Sum of all members exactly","Exactly sum + padding","Size of largest member","Compiler-defined"],correct:1,exp:"struct size = sum of members + possible padding bytes for alignment (may vary by compiler)."},
-        {q:"struct S{int a; char b; int c;};\nWhich is nested structure?",options:["struct inside another struct","struct with array","struct with pointer","struct with union"],correct:0,exp:"Nested structure means one struct is a MEMBER of another struct."},
-        {q:"Default access for struct members in C?",options:["private","public","protected","depends"],correct:1,exp:"In C, struct members are always public (no access control). In C++, struct defaults to public, class defaults to private."},
+        {q:"Which operator accesses structure member via pointer?",options:[".","->"," *","::"],correct:1,exp:"Arrow operator (->) is used to access members via pointer. Equivalent to (*ptr).member."],
+        {q:"sizeof(struct) is?",options:["Sum of all members exactly","Exactly sum + padding","Size of largest member","Compiler-defined"],correct:1,exp:"struct size = sum of members + possible padding bytes for alignment (may vary by compiler)."],
+        {q:"struct S{int a; char b; int c;};\nWhich is nested structure?",options:["struct inside another struct","struct with array","struct with pointer","struct with union"],correct:0,exp:"Nested structure means one struct is a MEMBER of another struct."],
+        {q:"Default access for struct members in C?",options:["private","public","protected","depends"],correct:1,exp:"In C, struct members are always public (no access control). In C++, struct defaults to public, class defaults to private."],
       ]
     },
     {
@@ -1677,10 +1677,10 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"sizeof(union) with members int(4B), char(1B), double(8B)?",options:["13","8","4","Depends"],correct:1,exp:"Union size = size of LARGEST member = sizeof(double) = 8 bytes (plus possible padding)."},
-        {q:"In a union, how many members can be valid at once?",options:["All","Only one","Two","Depends"],correct:1,exp:"All union members share the SAME memory. Writing to one invalidates/overwrites others. Only ONE is valid."},
-        {q:"enum Day{MON,TUE,WED}; Value of WED?",options:["0","1","2","3"],correct:2,exp:"Default enum starts at 0. MON=0, TUE=1, WED=2."},
-        {q:"typedef unsigned int uint; — effect?",options:["Creates new type","Creates alias for unsigned int","Declares variable","Changes int size"],correct:1,exp:"typedef creates an ALIAS. uint is now another name for unsigned int; no new type is created."},
+        {q:"sizeof(union) with members int(4B), char(1B), double(8B)?",options:["13","8","4","Depends"],correct:1,exp:"Union size = size of LARGEST member = sizeof(double) = 8 bytes (plus possible padding)."],
+        {q:"In a union, how many members can be valid at once?",options:["All","Only one","Two","Depends"],correct:1,exp:"All union members share the SAME memory. Writing to one invalidates/overwrites others. Only ONE is valid."],
+        {q:"enum Day{MON,TUE,WED}; Value of WED?",options:["0","1","2","3"],correct:2,exp:"Default enum starts at 0. MON=0, TUE=1, WED=2."],
+        {q:"typedef unsigned int uint; — effect?",options:["Creates new type","Creates alias for unsigned int","Declares variable","Changes int size"],correct:1,exp:"typedef creates an ALIAS. uint is now another name for unsigned int; no new type is created."],
       ]
     },
     {
@@ -1760,10 +1760,10 @@ int main() {
 }`,
       mcqs:[
         {q:"Default access specifier in a C++ class?",options:["public","private","protected","none"],correct:1,exp:"In a C++ class, members are PRIVATE by default. In struct, they are public by default."},
-        {q:"What is a static data member in C++?",options:["Local to function","One copy shared by all objects","Const member","Private by default"],correct:1,exp:"Static data member has only ONE copy shared by ALL objects of the class. Declared inside, defined outside."},
-        {q:"What is an inline function?",options:["Function in a loop","Code inserted at call site","Static function","Recursive function"],correct:1,exp:"inline functions: code is inserted directly at the call site by compiler, reducing function call overhead."},
-        {q:"cout is defined in which header?",options:["stdio.h","stdlib.h","iostream","conio.h"],correct:2,exp:"cout and cin are defined in the <iostream> header (C++ standard library)."},
-        {q:"Difference between struct and class in C++?",options:["No difference","struct:public default; class:private default","class is faster","struct has more features"],correct:1,exp:"The ONLY difference in C++ is the default access: struct defaults to public, class defaults to private."},
+        {q:"What is a static data member in C++?",options:["Local to function","One copy shared by all objects","Const member","Private by default"],correct:1,exp:"Static data member has only ONE copy shared by ALL objects of the class. Declared inside, defined outside."],
+        {q:"What is an inline function?",options:["Function in a loop","Code inserted at call site","Static function","Recursive function"],correct:1,exp:"inline functions: code is inserted directly at the call site by compiler, reducing function call overhead."],
+        {q:"cout is defined in which header?",options:["stdio.h","stdlib.h","iostream","conio.h"],correct:2,exp:"cout and cin are defined in the <iostream> header (C++ standard library)."],
+        {q:"Difference between struct and class in C++?",options:["No difference","struct:public default; class:private default","class is faster","struct has more features"],correct:1,exp:"The ONLY difference in C++ is the default access: struct defaults to public, class defaults to private."],
       ]
     },
   ]
@@ -1898,7 +1898,7 @@ int main() {
     return 0;
 }`,
       mcqs:[
-        {q:"Armstrong number: 153 = 1³+5³+3³ = ?",options:["153","153 (yes)","150","Not Armstrong"],correct:1,exp:"1³=1, 5³=125, 3³=27. 1+125+27=153. Yes, 153 is an Armstrong number!"},
+        {q:"Armstrong number: 153 = 1³+5³+3³ = ?",options:["153","153 (yes)","150","Not Armstrong"],correct:1,exp:"1³=1, 5³=125, 3³=27. 1+125+27=153. Yes, 153 is an Armstrong number!"],
       ]
     },
     {
@@ -1964,7 +1964,7 @@ void counter(void) {
     printf("static count=%d  auto temp=%d\\n", count, temp);
 }`,
       mcqs:[
-        {q:"What is the output of counter() called twice?\nstatic int c=0; c++;",options:["1 then 1","1 then 2","0 then 1","2 then 2"],correct:1,exp:"static preserves value. First call: c=1. Second call: c=2. Output: 1 then 2."},
+        {q:"What is the output of counter() called twice?\nstatic int c=0; c++;",options:["1 then 1","1 then 2","0 then 1","2 then 2"],correct:1,exp:"static preserves value. First call: c=1. Second call: c=2. Output: 1 then 2."],
       ]
     },
     {
@@ -2047,7 +2047,7 @@ int main(){
     return 0;
 }`,
       mcqs:[
-        {q:"What proves arrays are stored contiguously?",options:["printf values","Addresses differ by sizeof(type)","Random access","sizeof(arr)"],correct:1,exp:"Printing addresses of arr[i] and arr[i+1] shows they differ by exactly sizeof(int)=4 bytes, proving contiguous storage."},
+        {q:"What proves arrays are stored contiguously?",options:["printf values","Addresses differ by sizeof(type)","Random access","sizeof(arr)"],correct:1,exp:"Printing addresses of arr[i] and arr[i+1] shows they differ by exactly sizeof(int)=4 bytes, proving contiguous storage."],
       ]
     },
     {
@@ -2118,7 +2118,7 @@ int main(){
     return 0;
 }`,
       mcqs:[
-        {q:"After free(ptr), what should you do to avoid dangling pointer?",options:["Ignore it","Set ptr=NULL","Allocate again","Print it"],correct:1,exp:"After free(), the pointer still holds the old address (dangling). Set ptr=NULL immediately to make it a null pointer (safe)."},
+        {q:"After free(ptr), what should you do to avoid dangling pointer?",options:["Ignore it","Set ptr=NULL","Allocate again","Print it"],correct:1,exp:"After free(), the pointer still holds the old address (dangling). Set ptr=NULL immediately to make it a null pointer (safe)."],
       ]
     },
     {
@@ -2195,7 +2195,7 @@ int main(){
     return 0;
 }`,
       mcqs:[
-        {q:"Practical to differentiate struct vs union uses?",options:["P4","P5","P6","P3"],correct:2,exp:"P6 covers structures and unions, including a sizeof comparison to show the memory difference."},
+        {q:"Practical to differentiate struct vs union uses?",options:["P4","P5","P6","P3"],correct:2,exp:"P6 covers structures and unions, including a sizeof comparison to show the memory difference."],
       ]
     },
   ]
@@ -2369,16 +2369,24 @@ function ChatPanel({ onClose, ctx }) {
     const um={role:"user",content:inp.trim()};
     const hist=[...msgs,um]; setMsgs(hist); setInp(""); setLoad(true);
     try{
-      const r=await fetch("/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
+      const r=await fetch("https://api.anthropic.com/v1/messages",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({
         model:"claude-sonnet-4-20250514",max_tokens:1000,
         system:`You are an expert C programming tutor for CSE101 Computer Programming (as per Kamthane and Balagurusamy textbooks). Current topic: ${ctx}.
 Syllabus: Unit I (C basics, data types, operators), Unit II (control structures, I/O), Unit III (functions, storage classes, recursion), Unit IV (arrays, searching, sorting), Unit V (pointers, dynamic memory, strings), Unit VI (structures, unions, C++ basics).
 Explain concisely with C code examples. Keep answers under 300 words. Use code blocks for code.`,
-        messages:hist.map(m=>({role:m.role,content:m.content}))
+        messages:hist
+          .slice(hist.findIndex(m=>m.role==="user"))
+          .map(m=>({role:m.role,content:m.content}))
       })});
       const d=await r.json();
-      setMsgs(p=>[...p,{role:"assistant",content:d.content?.[0]?.text||"Sorry, error."}]);
-    }catch{setMsgs(p=>[...p,{role:"assistant",content:"Network error. Please try again."}]);}
+      const reply=d.content?.[0]?.text;
+      if(reply){
+        setMsgs(p=>[...p,{role:"assistant",content:reply}]);
+      } else {
+        const errMsg=d.error?.message||JSON.stringify(d);
+        setMsgs(p=>[...p,{role:"assistant",content:"⚠️ API error: "+errMsg}]);
+      }
+    }catch(err){setMsgs(p=>[...p,{role:"assistant",content:"⚠️ Network error: "+err.message}]);}
     setLoad(false);
   };
   const renderMsg=c=>{
